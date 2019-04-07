@@ -1,0 +1,5 @@
+apps:
+  - script: "/usr/src/app/src/build/app.js"
+    name: "APP"
+    exec_mode: "fork"
+    instances: 1

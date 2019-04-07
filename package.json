@@ -1,0 +1,91 @@
+{
+  "name": "tidbits-backend",
+  "version": "0.1.0",
+  "scripts": {
+    "test": "NODE_ENV=test jest",
+    "docker": "node ./src/build/app.js",
+    "local": "nodemon --config ./nodemon.json --exec 'npx babel-node ./src/app.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vaskaloidis/tidbits.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "<rootDir>/node_modules/jest-mock-knex/serializer"
+    ]
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.2.0",
+    "apollo-datasource": "^0.2.1",
+    "apollo-datasource-rest": "^0.3.1",
+    "apollo-server-errors": "^2.2.0",
+    "apollo-server-express": "^2.3.1",
+    "aws-sdk": "^2.395.0",
+    "axios": "~0.18.0",
+    "bluebird": "^3.5.3",
+    "bookshelf": "^0.14.2",
+    "cognito-express": "~2.0.14",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "dotenv": "^6.2.0",
+    "express": "~4.16.0",
+    "faker": "^4.1.0",
+    "graphql": "^14.1.1",
+    "jest-mock-knex": "^1.18.0",
+    "jsonwebtoken": "^8.4.0",
+    "jwk-to-pem": "^2.0.1",
+    "knex": "^0.16.3",
+    "knex-cleaner": "^1.1.4",
+    "lodash": "^4.17.11",
+    "moment": "^2.24.0",
+    "morgan": "~1.9.0",
+    "mssql": "^4.3.2",
+    "passport": "^0.4.0",
+    "pg": "^7.8.0",
+    "rosie": "^2.0.1",
+    "tedious": "^5.0.3",
+    "uuid": "^3.3.2",
+    "winston": "^3.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/register": "^7.0.0",
+    "apollo": "^2.1.8",
+    "apollo-link": "^1.2.6",
+    "apollo-link-http": "^1.5.9",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "eslint": "^5.12.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-prettier": "^3.0.1",
+    "husky": "^1.3.1",
+    "jest": "^23.6.0",
+    "lint-staged": "^8.1.0",
+    "nock": "^10.0.2",
+    "node-fetch": "^2.3.0",
+    "nodemon": "^1.18.9",
+    "prettier": "^1.15.3"
+  }
+}

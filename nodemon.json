@@ -1,0 +1,7 @@
+{
+  "env": {
+    "SECRETS": "./.env-secrets",
+    "GQL_INTROSPECTION": true,
+    "GQL_PLAYGROUND": true
+  }
+}
