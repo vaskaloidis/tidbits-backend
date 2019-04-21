@@ -6,12 +6,14 @@ import typeDefs from "./types";
 import { logger, database, Config } from "./common";
 
 // Postgres
-import ChunkAPI from "./resolvers/datasources/postgres/stack";
+import StackAPI from "./resolvers/datasources/postgres/stack";
 import TidbitAPI from "./resolvers/datasources/postgres/tidbit";
+import BitAPI from "./resolvers/datasources/postgres/bit";
 
 const dataSources = () => ({
-  chunkAPI: new ChunkAPI(database),
-  tidbitAPI: new TidbitAPI(database)
+  stackAPI: new StackAPI(database),
+  tidbitAPI: new TidbitAPI(database),
+  bitAPI: new BitAPI(database)
 });
 
 const app = express();
@@ -25,14 +27,8 @@ const server = new ApolloServer({
 
 server.applyMiddleware({ app });
 
-app.get("/", (req, res) => {
-  res.send({ running: true });
-});
-
-app.get("/status", (req, res) => {
-  res.send(200);
-});
-
+app.get("/", (req, res) => res.send({ running: true }));
+app.get("/status", (req, res) => res.send(200));
 app.listen(Config.PORT, () => {
   logger.info("🚀 application ready");
   logger.info(

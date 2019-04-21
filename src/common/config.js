@@ -17,7 +17,7 @@ if (!process.env.NODE_ENV) {
 export const { PG_CONNECTION_STRING } = process.env;
 
 // non-secret settings
-export const PORT = process.env.PORT || "3700";
+export const PORT = process.env.PORT || "3500";
 export const DB_POOL_MIN = process.env.DB_POOL_MIN || 2;
 export const DB_POOL_MAX = process.env.DB_POOL_MAX || 10;
 export const GQL_PLAYGROUND = process.env.GQL_PLAYGROUND || false;

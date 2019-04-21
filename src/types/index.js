@@ -3,6 +3,7 @@ import { gql } from "apollo-server-express";
 // Objects
 import Stack from "./objects/stack";
 import Tidbit from "./objects/tidbit";
+import Bit from "./objects/bit";
 
 import Query from "./query";
 import Mutation from "./mutation";
@@ -13,6 +14,7 @@ const typeDefs = gql`
   ${Query}
   ${Stack}
   ${Tidbit}
+  ${Bit}
 `;
 
 export default typeDefs;

@@ -1,21 +1,25 @@
 const resolvers = {
-  Car: {},
+  Stack: {
+    tidbits: async (parent, args, { dataSources }) =>
+      dataSources.tidbitAPI.query({ stack_id: parent.id })
+  },
+  Tidbit: {
+    bits: async (parent, args, { dataSources }) =>
+      dataSources.bitAPI.query({ tidbit_id: parent.id })
+  },
+  Bit: {},
   Query: {
-    car: async (parent, args, { dataSources }) =>
-      dataSources.carAPI.car(args.id),
-    cars: async (parent, args, { dataSources }) => dataSources.carAPI.cars(),
-    fordCars: async (parent, args, { dataSources }) =>
-      dataSources.carAPI.carsByModel({ make: "Ford" }),
-    carsByYear: async (parent, args, { dataSources }) =>
-      dataSources.carAPI.carsByYear(args)
+    stacks: async (parent, args, { dataSources }) => dataSources.stackAPI.all(),
+    stack: async (parent, args, { dataSources }) =>
+      dataSources.stackAPI.single(args.id)
   },
   Mutation: {
-    createCar: async (parent, args, { dataSources }) =>
-      dataSources.carAPI.createCar(args),
-    deleteCar: async (parent, args, { dataSources }) =>
-      dataSources.carAPI.deleteCar(args.id),
-    updateCar: async (parent, args, { dataSources }) =>
-      dataSources.carAPI.updateCar(args)
+    createStack: async (parent, args, { dataSources }) =>
+      dataSources.stackAPI.create(args),
+    createTidbit: async (parent, args, { dataSources }) =>
+      dataSources.tidbitAPI.create(args.id),
+    addBit: async (parent, args, { dataSources }) =>
+      dataSources.bitAPI.create(args)
   }
 };
 

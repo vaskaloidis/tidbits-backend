@@ -1,9 +1,9 @@
 const Tidbit = `
   type Tidbit {
     id: ID
-    description: String
-    content: String
+    name: String
     language: String
+    bits: [Bit]
     createdAt: String
     updatedAt: String
   }

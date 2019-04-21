@@ -1,6 +1,6 @@
 const { DataSource } = require("apollo-datasource");
 
-class StackAPI extends DataSource {
+class BitAPI extends DataSource {
   constructor(database) {
     super();
     this.database = database;
@@ -11,44 +11,44 @@ class StackAPI extends DataSource {
   }
 
   async create(data) {
-    const result = await this.database("stack")
+    const result = await this.database("bit")
       .returning("id")
       .insert(data);
     return this.single(result[0]);
   }
 
   async delete(id) {
-    const result = await this.database("stack")
+    const result = await this.database("bit")
       .where("id", id)
       .del();
     return result;
   }
 
-  async update({ name, language, id }) {
-    const updateable = { name, language };
+  async update({ content, language, id }) {
+    const updateable = { content, language };
     updateable.updatedAt = Date.now();
-    await this.database("stack")
+    await this.database("bit")
       .where("id", id)
       .update(updateable);
-    return this.stack(id);
+    return this.bit(id);
   }
 
   async all() {
-    const result = await this.database("stack");
+    const result = await this.database("bit");
     return result;
   }
 
   async single(id) {
-    const result = await this.database("stack")
+    const result = await this.database("bit")
       .where("id", id)
       .first();
     return result;
   }
 
   async query(query) {
-    const result = await this.database("stack").where(query);
+    const result = await this.database("bit").where(query);
     return result;
   }
 }
 
-module.exports = StackAPI;
+module.exports = BitAPI;

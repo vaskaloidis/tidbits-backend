@@ -14,7 +14,7 @@ class TidbitAPI extends DataSource {
     const result = await this.database("tidbit")
       .returning("id")
       .insert(data);
-    return this.tidbit(result[0]);
+    return this.single(result[0]);
   }
 
   async delete(id) {
@@ -35,6 +35,11 @@ class TidbitAPI extends DataSource {
 
   async all() {
     const result = await this.database("tidbit");
+    return result;
+  }
+
+  async query(query) {
+    const result = await this.database("tidbit").where(query);
     return result;
   }
 
