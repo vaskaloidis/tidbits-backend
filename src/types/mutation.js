@@ -1,6 +1,7 @@
 const Mutation = `
   type Mutation {
     createStack(name: String, defaultLanguage: String): Stack
+    updateStack(id: Int, name: String, defaultLanguage: String): Stack
     createTidbit(content: String, language: String): Tidbit
     addBit(tidbit_id: Int, content: String): Tidbit
     updateBit(bit_id: Int): Bit
